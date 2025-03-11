@@ -3,9 +3,11 @@ import dotenv from 'dotenv';
 import morgan from "morgan";
 import cors from "cors";
 import colors from 'colors';
-import { router } from "./routes/testroute.js";
+import {router as testroute} from "./routes/testroute.js";
 import { connectdb } from './config/db.js';
-import { router as registerRoute} from "./routes/registerRoute.js";
+import {router as registerRoute} from "./routes/registerRoute.js";
+import {router as userRoute} from "./routes/userRoutes.js";
+import {router as restaurantRoute} from "./routes/restaurantroute.js"
 const app = express();
 
 
@@ -21,8 +23,10 @@ app.use(morgan("dev"));
 app.use(cors());
 
 //Route
-app.use('/api/v1/test', router);
-app.use('/api/v1/test', registerRoute);
+app.use('/api/v1/test', testroute);
+app.use('/api/v1/auth', registerRoute);
+app.use('/api/v1/user', userRoute);
+app.use('/api/v1/restaurant', restaurantRoute);
 
 //Main Route
 app.get('/', (req, res) => {

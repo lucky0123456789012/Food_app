@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
   profile: {
     type: String,
     default: 'https://banner2.cleanpng.com/20180321/lvq/av0m7nwj5.webp'
-  }
+  },
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
